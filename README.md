@@ -293,8 +293,12 @@ With `-nobatch`:
   
 ```  
 -- Schedd: strontium.nmrbox.org : <155.37.253.57:9618?... @ 06/07/22 06:48:54  
- ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD 1.0   jwedell         6/7  06:47   0+00:00:00 I  0    0.0 echo example 2dog.pdb 1.1   jwedell         6/7  06:47   0+00:00:00 I  0    0.0 echo example 2cow.pdb 1.2   jwedell         6/7  06:47   0+00:00:00 I  0    0.0 echo example 1rcf.pdb  
-Total for query: 3 jobs; 0 completed, 0 removed, 3 idle, 0 running, 0 held, 0 suspended Total for jwedell: 3 jobs; 0 completed, 0 removed, 3 idle, 0 running, 0 held, 0 suspended Total for all users: 3 jobs; 0 completed, 0 removed, 3 idle, 0 running, 0 held, 0 suspended  
+ ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD
+ 1.0   jwedell         6/7  06:47   0+00:00:00 I  0    0.0 echo example 2dog.pdb
+ 1.1   jwedell         6/7  06:47   0+00:00:00 I  0    0.0 echo example 2cow.pdb
+ 1.2   jwedell         6/7  06:47   0+00:00:00 I  0    0.0 echo example 1rcf.pdb  
+Total for query: 3 jobs; 0 completed, 0 removed, 3 idle, 0 running, 0 held, 0 suspended
+Total for jwedell: 3 jobs; 0 completed, 0 removed, 3 idle, 0 running, 0 held, 0 suspended Total for all users: 3 jobs; 0 completed, 0 removed, 3 idle, 0 running, 0 held, 0 suspended  
 ```  
   
 Continue to use `condor_q` to watch and see when your job has completed. When it completes,  
