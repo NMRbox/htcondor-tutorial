@@ -246,7 +246,7 @@ to run your job, you can do that using the `-const` argument to `condor_status`.
   
 * Check which machines are on release 2022.22:  
   
-  * `condor_status -const '(Target.Release == "2022.22")'`  
+  * `condor_status -const '(Release == 2022.22)'`  
 * Check which machines have at least 100 CPUs
 	* `condor_status -const '(cpus > 100)'`
   
@@ -423,7 +423,7 @@ that in order to run your job the machine must be able to provide the specified
 resources.  
   
 ```  
-requirements = ((Target.Release == "2022.22") || (Target.Release == "2022.21"))  
+requirements = ((Target.Release == 2022.22) || (Target.Release == 2022.21))  
 +Production = True  
 ```  
   
@@ -598,7 +598,7 @@ If you want to check a given requirement against the pool to see which machines 
 to run your job, you can do that using the `-const` argument to `condor_status`. Here is an example  
 to check which machines are on release 2022.22:  
   
-`condor_status -const '(Target.Release == "2022.22")'`  
+`condor_status -const '(Release == 2022.22)'`  
   
   
 ### Submitting a job  
