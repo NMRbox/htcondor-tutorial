@@ -1,0 +1,36 @@
+
+universe = vanilla
+
+# What to do - use the full path
+executable = /bin/echo
+arguments = example $(JobName).pdb
+
+# Requirements to run
+request_memory = 1G
+request_cpus = 1
+request_gpus = 0
+
+requirements = ((Target.Release == "2022.22") || (Target.Release == "2022.21"))
++Production = True
+
+# Where to log
+output = logs/$(JobName).stdout
+error = logs/$(JobName).stderr
+log = logs/run.log
+
+# Rely on a shared filesystem
+transfer_executable = FALSE
+should_transfer_files = NO
+
+# Specify different arguments for each submission
+# JobName is a variable I defined - not something built in to condor
+JobName = 2dog
+queue
+
+JobName = 2cow
+queue
+
+JobName = 1rcf
+queue
+
+# etc...

@@ -1,0 +1,12 @@
+
+universe = vanilla
+
+# What to do - use the full path
+executable = /bin/touch
+arguments = files/$(PROCID)
+
+log = logs/touch.log
+output = logs/touch_$(PROCID).out
+error = logs/touch_$(PROCID).err
+queue 5
+
