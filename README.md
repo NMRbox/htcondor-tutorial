@@ -256,8 +256,7 @@ to run your job, you can do that using the `-const` argument to `condor_status`.
 With an understanding of the essential parts of a Condor submission file, let's go ahead and 
 actually submit a job to Condor. 
 
-In the HTCondor folder in your home directory (`~/EVENTS/2022-nmrbox-summer/HTCondor`) you should 
-have a file called `pdb.sub` which uses many of the options described above. The executable simply 
+'pdb.sub' in this github repository uses many of the options described above. The executable simply 
 echoes some text to STDOUT, but it illustrates how you could run a given computation 
 against a set of PDB structures. 
 
