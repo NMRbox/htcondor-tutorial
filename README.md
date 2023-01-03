@@ -339,7 +339,8 @@ Here are some things to keep in mind while working to use Condor to take advanta
 of a single core. This is because it is much easier to find a single available core in the pool to start 
 running your job than to find, for example, a machine with 48 simultaneously free cores. So rather than 
 run a multiprocess workflow with `request_cpus=48` see if you can instead run 48 condor jobs/processes 
-which each require just one CPU. 
+which each require just one CPU. Note that if the pool has a queue of single core jobs, your multicore jobs will
+not run at all until the queue of single core jobs is exhausted. As such, multicore jobs are strongly discouraged.
 3) To take advantage of our additional "compute-only" nodes, you can't count on NMR software being installed 
 and will need to ensure your executable can stand alone. A python virtual environment would allow this, as would 
 a staticly compiled binary. 
