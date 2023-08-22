@@ -9,7 +9,7 @@ wedell@uchc.edu
 ## Background 
 
 During this tutorial we will walk through submitting jobs to the HTCondor 
-workload management system. We will then investigate how the jobs run in the HTCondor 
+workload management system on NMRbox. We will then investigate how the jobs run in the HTCondor 
 environment and explore how to manage submitted jobs. 
 
 ### The submit file 
@@ -25,21 +25,18 @@ Let's look at a simple submit file in detail to see what arguments are necessary
 
 
 ``` 
-universe = vanilla 
 executable = /bin/ls 
 arguments = / 
 
 log = logs/basic.log 
 output = logs/basic.out 
 error = logs/basic.err 
+getenv=True 
 queue 
 ``` 
 
 Going through the lines in order: 
 
-* The universe specified which HTCondor universe to run in. These are discussed 
-in the slides. The most straightforward is the `vanilla` universe. As a beginner this 
-universe should be suitable for all your jobs. 
 * The executable specifies which command should actually be ran when the job runs. You 
 must use an absolute path. 
 * The arguments line, while technically optional, will almost always be used. It allows you 
@@ -47,6 +44,11 @@ to specify which command line arguments to provide to the executable.
 * The log, output, and error commands specify where HTCondor will log. The output and 
 error will be populated with whatever the job writes to STDERR and STDOUT while the 
 log will contain the HTCondor logs related to the scheduling and running of the job. 
+* This line ensures that the HTCondor job runs with the same shell environment as existed in the shell 
+where you submitted the job. Without specifying this, your job may fail due to not being able to locate 
+a called executable in the path, or due to other issues. This is not a very portable option when submitting 
+to a heterogeneous computing environment, but it works well on production NMRbox machines, and simplifies 
+your life when developing your first submit files. 
 * The queue parameter is special. Each time this argument is encountered in the file 
 HTCondor will submit a job to the queue with whatever arguments were specified prior 
 in the file. You can specify queue multiple times on different lines, and optionally 
@@ -101,16 +103,6 @@ and rely on the shared file system, which avoids you needing to specify which in
 
 The only thing to be careful of is that you have your job located in your home directory (or a subdirectory) 
 and not in your scratch directory or other machine-specific temporary directory. 
-
-``` 
-getenv=True 
-``` 
-
-This line ensures that the HTCondor job runs with the same shell environment as existed in the shell 
-where you submitted the job. Without specifying this, your job may fail due to not being able to locate 
-a called executable in the path, or due to other issues. This is not a very portable option when submitting 
-to a heterogeneous computing environment, but it works well on production NMRbox machines, and simplifies 
-your life when developing your first submit files. 
 
 #### Variables! 
 
