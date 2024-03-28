@@ -72,7 +72,7 @@ that in order to run your job the machine must be able to provide the specified
 resources. 
 
 ``` 
-requirements = ((Target.Release == "2022.22") || (Target.Release == "2022.21")) 
+requirements = NMRPIPE == "11.5 rev 2023.105.21.31"
 +Production = True 
 ``` 
 
@@ -103,6 +103,17 @@ and rely on the shared file system, which avoids you needing to specify which in
 
 The only thing to be careful of is that you have your job located in your home directory (or a subdirectory) 
 and not in your scratch directory or other machine-specific temporary directory. 
+
+#### Machine attributes
+
+The following attributes are defined on NMRbox:
+- **Production** is a machine with [NMRbox software](https://nmrbox.nmrhub.org/software) installed. By default, jobs are 
+   limited to production machines.
+- **Release** is a machine version as listed on the [hardware](https://nmrbox.nmrhub.org/hardware) page.
+- Slightly modified software versions are available as attributes. Underscores and dashes in software names
+  are removed.
+    - *NMRpipe* versions will be implemented as **NMRPIPE**.
+    - *CcpNmr Analysis Assign* is implemented as **CCPNMRANALYSISASSIGN**. 
 
 #### Variables! 
 
@@ -236,9 +247,9 @@ If you want to check a given requirement against the pool to see which machines 
 to run your job, you can do that using the `-const` argument to `condor_status`. Here are a few examples: 
 
 
-* Check which machines are on release 2022.22: 
+* Check which machines have NMRPIPE version 11.5 rev 2023.105.21.31:
 
-  * `condor_status -const '(Release == "2022.22")'` 
+  * `condor_status -const '(NMRPIPE == "11.5 rev 2023.105.21.31")'`
 * Check which machines have at least 100 CPUs 
 	* `condor_status -const '(cpus > 100)'` 
 
@@ -307,10 +318,20 @@ the running job state. (Remember, you can use `condor_q` to check.) Determine th
 you would like to explore futher, and run 
 
 `condor_ssh_to_job clusterID.procID` where clusterID and procID are replaced with the value for your job, 
-which you can get from `condor_q` or `condor_q -nobatch`. 
+which you can get from `condor_q` or `condor_q nobatch`. 
 
 This will open up an interactive SSH session to the exact machine and location your job is running. You 
 can use this to manually step through the actions your job would take and explore and unexpected behavior. 
+
+### GPU usage
+To request a GPU and a certain amount of GPU memory
+```
+gpus_minimum_memory = 1MB
+request_gpus = 1
+```
+
+It is best not to request excessive resources, as this with lower your relative user priority compared
+to other htcondor users.
 
 #### File transfer 
 
@@ -321,6 +342,10 @@ those using the `transfer_output_files` argument if you want them to be preserve
 
 As mentioned before, you can avoid this entirely using the `should_transfer_files` and `transfer_executables` 
 options, and relying on the shared filesystem. 
+
+
+## Version
+NMRbox is currently running the HTCondor version 23 [feature channel](https://htcondor.org/htcondor/release-highlights/).
 
 ### Helpful hints 
 
