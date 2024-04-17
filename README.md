@@ -69,7 +69,9 @@ request_memory = 4GB
 
 These arguments speak for themselves. They are telling the HTCondor matchmaker 
 that in order to run your job the machine must be able to provide the specified 
-resources. 
+resources. **note** - HTCondor will terminate your job if you use more than 128MB of memory
+when you omit `request_memory`. Therefore, please ensure you request enough memory with the
+`request_memory` parameter.
 
 ``` 
 requirements = NMRPIPE == "11.5 rev 2023.105.21.31"
