@@ -28,7 +28,6 @@ Let's look at a simple submit file in detail to see what arguments are necessary
 executable = /bin/ls 
 arguments = / 
 
-request_memory = 128MB 
 log = logs/basic.log 
 output = logs/basic.out 
 error = logs/basic.err 
@@ -70,9 +69,11 @@ request_memory = 4GB
 
 These arguments speak for themselves. They are telling the HTCondor matchmaker 
 that in order to run your job the machine must be able to provide the specified 
-resources. *Note* - HTCondor will terminate your job if you use more than 128MB of memory
-when you omit `request_memory`. Therefore, please ensure you request enough memory with the
-`request_memory` parameter.
+resources.
+
+*Note* - HTCondor will terminate your job (in the job log file it will report `Abnormal termination (signal 9)`)
+if you use more than 2GB of memory when you omit `request_memory`. Therefore, if your jobs require more than 2GB of memory,
+please ensure you request enough memory with the `request_memory` parameter.
 
 ``` 
 requirements = NMRPIPE == "11.5 rev 2023.105.21.31"
