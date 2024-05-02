@@ -331,7 +331,7 @@ can use this to manually step through the actions your job would take and explor
 To request a GPU and a certain amount of GPU memory
 ```
 gpus_minimum_memory = 1MB
-request_gpus = 1
+require_gpus = (GlobalMemoryMb >= 1)
 ```
 
 It is best not to request excessive resources, as this with lower your relative user priority compared
