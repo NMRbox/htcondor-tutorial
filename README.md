@@ -331,6 +331,8 @@ can use this to manually step through the actions your job would take and explor
 To request a GPU and a certain amount of GPU memory
 ```
 gpus_minimum_memory = 1MB
+request_gpus = 1
+# Replace 1 in the line below with the amount of GPU memory required
 require_gpus = (GlobalMemoryMb >= 1)
 ```
 
