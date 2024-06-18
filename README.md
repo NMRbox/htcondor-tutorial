@@ -330,10 +330,11 @@ can use this to manually step through the actions your job would take and explor
 ### GPU usage
 To request a GPU and a certain amount of GPU memory
 ```
-gpus_minimum_memory = 1MB
 request_gpus = 1
-# Replace 1 in the line below with the amount of GPU memory required
+# Replace 1 in the line below with the amount of GPU memory required in megabytes
 require_gpus = (GlobalMemoryMb >= 1)
+# When we update our condor pool version, you can replace the `require_gpus` argument with this simplified form. (This page will be edited.)
+# gpus_minimum_memory = 1MB
 ```
 
 It is best not to request excessive resources, as this with lower your relative user priority compared
