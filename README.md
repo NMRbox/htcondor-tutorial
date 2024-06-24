@@ -4,7 +4,7 @@
 Presented by: 
 Jon Wedell 
 Lead Software Developer, BioMagResBank 
-wedell@uchc.edu 
+wedell@uchc.edu (For support, please contact support@nmrhub.org)
 
 ## Background 
 
