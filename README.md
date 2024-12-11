@@ -75,8 +75,9 @@ resources.
 if you use more than 2GB of memory when you omit `request_memory`. Therefore, if your jobs require more than 2GB of memory,
 please ensure you request enough memory with the `request_memory` parameter.
 
-``` 
-requirements = NMRPIPE == "11.5 rev 2023.105.21.31"
+```
+# Note - check current versions of NMRPIPE available by using the command `condor_status -af NMRPIPE`
+requirements = NMRPIPE == "v11.5_rev_2023.105.21.31"
 +Production = True 
 ``` 
 
