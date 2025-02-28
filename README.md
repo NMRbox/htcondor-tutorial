@@ -78,7 +78,7 @@ please ensure you request enough memory with the `request_memory` parameter.
 ```
 # Note - check current versions of NMRPIPE available by using the command `condor_status -af NMRPIPE`
 requirements = NMRPIPE == "v11.5_rev_2023.105.21.31"
-+Production = True 
++Production=True 
 ``` 
 
 These arguments allow us to further refine which machines our jobs will execute on. 
