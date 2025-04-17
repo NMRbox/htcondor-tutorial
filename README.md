@@ -353,7 +353,7 @@ options, and relying on the shared filesystem.
 
 
 ## Version
-NMRbox is currently running the HTCondor version 23 [feature channel](https://htcondor.org/htcondor/release-highlights/).
+NMRbox is currently running the HTCondor version 24 [Long Term Support (LTS)](https://htcondor.org/htcondor/release-highlights/#long-term-support-channel).
 
 ### Helpful hints 
 
