@@ -1,0 +1,15 @@
+#
+# example GROMACS 
+#
+executable = /usr/software/bin/gmx
+arguments = mdrun -v -deffnm md_0_1
+require_gpus = (GlobalMemoryMB >= 40000)
+request_gpus           = 1
+request_cpus           = 32
+request_memory         = 120G
+log = 1ns.log
+output = 1ns.out
+error = 1ns.err
+getenv=True
+should_transfer_files = NO
+queue (edited) 
