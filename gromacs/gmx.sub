@@ -1,0 +1,21 @@
+universe = vanilla
+executable = /usr/software/bin/gmx
+arguments = "mdrun -v -deffnm em -nb gpu"
+
+request_memory = 320
+request_cpus = 16 
+request_disk = 2GB
+request_gpus = 1
+require_gpus = (GlobalMemoryMb >= 576)
+
+requirements = gromacs == "v2025.3"
+
++Production = True
+
+output = gmx.$(Cluster).$(Process).out
+error = gmx.$(Cluster).$(Process).err
+log = gmx.$(Cluster).$(Process).log
+
+should_transfer_files = NO
+getenv = True
+queue
