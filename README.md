@@ -332,11 +332,21 @@ can use this to manually step through the actions your job would take and explor
 To request a GPU and a certain amount of GPU memory
 ```
 request_gpus = 1
-# Replace 1 in the line below with the amount of GPU memory required in megabytes
+
+# Replace 1 in the line below with the amount of GPU memory required in megabytes if you need a certain amount of GPU RAM
 require_gpus = (GlobalMemoryMb >= 1)
+
 # When we update our condor pool version, you can replace the `require_gpus` argument with this simplified form. (This page will be edited.)
 # gpus_minimum_memory = 1MB
+
+# If you require a specific GPU class (see the link to the NMRbox GPUs page immediately below) you can add a requirement for the capability class.
+# Level 8 or above would exclude the T4s and V100s. In general, if you don't require a specific GPU capability level, you're better NOT including this to get access to more GPUs
+#requirements = GPUs_Capability >= 8
 ```
+
+For information on available GPUs in NMRbox and their compute capability level, please see [here](https://nmrbox.nmrhub.org/pages/htcondor-policy#gpus).
+
+For more information on GPU specific request formatting, please see additional HTCondor GPU documentation [here](https://batchdocs.web.cern.ch/gpu/index.html).
 
 It is best not to request excessive resources, as this with lower your relative user priority compared
 to other htcondor users.
